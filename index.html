@@ -13,77 +13,88 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
         .transition-smooth { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        /* Custom Scrollbar for Code Area */
-        textarea::-webkit-scrollbar { width: 8px; }
-        textarea::-webkit-scrollbar-track { background: #1e293b; }
-        textarea::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        /* Style Checkbox Custom */
+        .check-item { accent-color: #2563eb; width: 1.2rem; height: 1.2rem; cursor: pointer; }
     </style>
 </head>
-<body class="text-slate-800">
+<body class="text-slate-800 antialiased">
 
-    <div class="bg-gradient-to-r from-slate-900 to-slate-800 text-white pb-32 pt-16 rounded-b-[2.5rem] shadow-2xl">
-        <div class="container mx-auto px-6 text-center">
-            <div class="inline-flex items-center justify-center p-3 bg-blue-500/10 border border-blue-500/30 rounded-full mb-6 backdrop-blur-sm">
-                <i class="bi bi-rocket-takeoff-fill text-2xl text-blue-400 mr-2"></i>
-                <span class="text-sm font-semibold tracking-wide text-blue-100">RESEARCH PROJECT SE-05</span>
+    <div class="bg-slate-900 text-white pb-32 pt-16 rounded-b-[3rem] shadow-2xl relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#4f46e5 1px, transparent 1px); background-size: 32px 32px;"></div>
+        
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="inline-flex items-center justify-center px-4 py-1.5 bg-blue-500/10 border border-blue-400/30 rounded-full mb-6 backdrop-blur-sm">
+                <i class="bi bi-code-slash text-blue-400 mr-2"></i>
+                <span class="text-xs font-bold tracking-widest text-blue-100">RESEARCH PROJECT SE-05</span>
             </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight">Light-CD Toolkit</h1>
-            <p class="text-slate-400 text-lg max-w-2xl mx-auto font-light">
-                Instrumen Audit & Generator CI/CD Otomatis untuk Optimalisasi Deployment pada UMKM Kreatif.
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Light-CD Toolkit</h1>
+            <p class="text-slate-400 text-lg max-w-xl mx-auto leading-relaxed">
+                Instrumen Audit & Generator Pipeline CI/CD Otomatis untuk Infrastruktur Windows/XAMPP.
             </p>
         </div>
     </div>
 
-    <div class="container mx-auto px-4 -mt-24 pb-20">
+    <div class="container mx-auto px-4 -mt-20 pb-20 relative z-20">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
             <div class="lg:col-span-5">
-                <div class="bg-white rounded-2xl shadow-xl border border-slate-100 h-full flex flex-col overflow-hidden">
-                    <div class="p-6 border-b border-slate-50 bg-slate-50/50">
+                <div class="bg-white rounded-2xl shadow-xl border border-slate-200/60 h-full flex flex-col overflow-hidden">
+                    <div class="p-6 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
                         <h2 class="text-lg font-bold text-slate-700 flex items-center gap-2">
-                            <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 text-sm font-bold">1</span>
+                            <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-600 text-white text-sm font-bold shadow-lg shadow-indigo-500/30">1</span>
                             Audit Kesiapan
                         </h2>
+                        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Langkah Wajib</span>
                     </div>
                     
-                    <div class="p-6 flex-grow space-y-3">
-                        <p class="text-xs text-slate-400 uppercase font-bold tracking-wider mb-2">Checklist Infrastruktur</p>
-                        
-                        <label class="group flex items-start gap-3 p-3 rounded-xl border border-slate-100 hover:border-blue-200 hover:bg-blue-50/30 cursor-pointer transition-smooth">
-                            <input type="checkbox" class="check-item w-5 h-5 text-blue-600 rounded border-slate-300 focus:ring-blue-500 mt-0.5">
-                            <div class="text-sm text-slate-600 group-hover:text-slate-800">
-                                <strong>Clean Repository:</strong> Tidak ada folder <code>node_modules</code> atau <code>vendor</code>.
+                    <div class="p-6 flex-grow space-y-4">
+                        <label class="group flex items-start gap-4 p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 cursor-pointer transition-smooth bg-white shadow-sm">
+                            <div class="pt-1">
+                                <input type="checkbox" class="check-item">
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-700 group-hover:text-blue-700 transition-colors">Clean Repository</h4>
+                                <p class="text-xs text-slate-500 mt-1 leading-relaxed">Folder <code>node_modules</code> atau <code>vendor</code> sudah di-ignore (tidak ada di repo).</p>
                             </div>
                         </label>
 
-                        <label class="group flex items-start gap-3 p-3 rounded-xl border border-slate-100 hover:border-blue-200 hover:bg-blue-50/30 cursor-pointer transition-smooth">
-                            <input type="checkbox" class="check-item w-5 h-5 text-blue-600 rounded border-slate-300 focus:ring-blue-500 mt-0.5">
-                            <div class="text-sm text-slate-600 group-hover:text-slate-800">
-                                <strong>Environment Security:</strong> File <code>.env</code> sudah di-ignore.
+                        <label class="group flex items-start gap-4 p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 cursor-pointer transition-smooth bg-white shadow-sm">
+                            <div class="pt-1">
+                                <input type="checkbox" class="check-item">
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-700 group-hover:text-blue-700 transition-colors">Environment Security</h4>
+                                <p class="text-xs text-slate-500 mt-1 leading-relaxed">File konfigurasi <code>.env</code> TIDAK di-upload ke Git.</p>
                             </div>
                         </label>
 
-                        <label class="group flex items-start gap-3 p-3 rounded-xl border border-slate-100 hover:border-blue-200 hover:bg-blue-50/30 cursor-pointer transition-smooth">
-                            <input type="checkbox" class="check-item w-5 h-5 text-blue-600 rounded border-slate-300 focus:ring-blue-500 mt-0.5">
-                            <div class="text-sm text-slate-600 group-hover:text-slate-800">
-                                <strong>Server Ready:</strong> FileZilla Server (XAMPP) aktif & User FTP dibuat.
+                        <label class="group flex items-start gap-4 p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 cursor-pointer transition-smooth bg-white shadow-sm">
+                            <div class="pt-1">
+                                <input type="checkbox" class="check-item">
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-700 group-hover:text-blue-700 transition-colors">Server Ready (XAMPP)</h4>
+                                <p class="text-xs text-slate-500 mt-1 leading-relaxed">FileZilla Server aktif & User FTP sudah dibuat dengan hak akses penuh.</p>
                             </div>
                         </label>
 
-                        <label class="group flex items-start gap-3 p-3 rounded-xl border border-slate-100 hover:border-blue-200 hover:bg-blue-50/30 cursor-pointer transition-smooth">
-                            <input type="checkbox" class="check-item w-5 h-5 text-blue-600 rounded border-slate-300 focus:ring-blue-500 mt-0.5">
-                            <div class="text-sm text-slate-600 group-hover:text-slate-800">
-                                <strong>GitHub Secrets:</strong> Variabel koneksi sudah diset di Repo.
+                        <label class="group flex items-start gap-4 p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 cursor-pointer transition-smooth bg-white shadow-sm">
+                            <div class="pt-1">
+                                <input type="checkbox" class="check-item">
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-700 group-hover:text-blue-700 transition-colors">GitHub Secrets</h4>
+                                <p class="text-xs text-slate-500 mt-1 leading-relaxed">Variable <code>FTP_SERVER</code>, <code>FTP_USERNAME</code>, & <code>FTP_PASSWORD</code> sudah diset.</p>
                             </div>
                         </label>
                     </div>
 
                     <div class="p-6 bg-slate-50 border-t border-slate-100">
-                        <div id="statusBox" class="rounded-xl p-4 text-center transition-smooth bg-slate-200 text-slate-500">
-                            <div id="scoreTxt" class="text-4xl font-black mb-1">0%</div>
-                            <span id="badgeTxt" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-slate-300 text-slate-600 uppercase tracking-wider">
+                        <div id="statusBox" class="rounded-xl p-5 text-center transition-smooth bg-slate-200 text-slate-500 border border-transparent">
+                            <div id="scoreTxt" class="text-4xl font-black mb-1 tracking-tighter">0%</div>
+                            <span id="badgeTxt" class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-slate-300 text-slate-600 uppercase tracking-widest shadow-sm">
                                 Belum Siap
                             </span>
                         </div>
@@ -92,69 +103,75 @@
             </div>
 
             <div class="lg:col-span-7">
-                <div class="bg-white rounded-2xl shadow-xl border border-slate-100 relative overflow-hidden min-h-[600px]">
+                <div class="bg-white rounded-2xl shadow-xl border border-slate-200/60 relative overflow-hidden min-h-[640px] flex flex-col">
                     
-                    <div id="locker" class="absolute inset-0 bg-white/80 backdrop-blur-sm z-20 flex flex-col items-center justify-center text-center p-8 transition-smooth">
-                        <div class="bg-white p-5 rounded-full shadow-2xl mb-4 border border-slate-100 animate-bounce">
-                            <i class="bi bi-lock-fill text-4xl text-slate-300"></i>
+                    <div id="locker" class="absolute inset-0 bg-white/90 backdrop-blur-[2px] z-30 flex flex-col items-center justify-center text-center p-8 transition-smooth">
+                        <div class="bg-slate-50 p-6 rounded-full shadow-inner mb-6 animate-pulse border border-slate-100">
+                            <i class="bi bi-lock-fill text-5xl text-slate-300"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-700 mb-2">Fitur Terkunci</h3>
-                        <p class="text-slate-500 max-w-sm text-sm">Selesaikan audit kesiapan hingga 100% untuk membuka generator script ini.</p>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-2">Fitur Terkunci</h3>
+                        <p class="text-slate-500 max-w-xs mx-auto text-sm leading-relaxed">
+                            Selesaikan 4 poin audit di panel kiri hingga <strong class="text-slate-700">100%</strong> untuk membuka generator script ini.
+                        </p>
                     </div>
 
-                    <div class="p-6 border-b border-slate-50 bg-slate-50/50">
+                    <div class="p-6 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
                         <h2 class="text-lg font-bold text-slate-700 flex items-center gap-2">
-                            <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 text-sm font-bold">2</span>
+                            <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-500 text-white text-sm font-bold shadow-lg shadow-emerald-500/30">2</span>
                             Konfigurasi Pipeline
                         </h2>
+                        <span class="text-xs font-semibold text-emerald-600 uppercase tracking-wider bg-emerald-50 px-2 py-1 rounded">Generator</span>
                     </div>
 
-                    <div class="p-6 space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Nama Proyek</label>
+                    <div class="p-8 space-y-8 flex-grow">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">Nama Proyek</label>
                                 <input type="text" id="inpProj" placeholder="my-web-studio" 
-                                    class="w-full px-4 py-2.5 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-smooth text-sm">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-smooth text-sm font-medium">
                             </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Target Branch</label>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">Target Branch</label>
                                 <input type="text" id="inpBranch" value="main" 
-                                    class="w-full px-4 py-2.5 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-smooth text-sm">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-smooth text-sm font-medium">
                             </div>
-                            <div class="md:col-span-2">
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Folder Proyek (Local Windows)</label>
-                                <div class="flex shadow-sm">
-                                    <span class="inline-flex items-center px-4 rounded-l-lg border border-r-0 border-slate-200 bg-slate-100 text-slate-500">
-                                        <i class="bi bi-hdd-network"></i>
+                            <div class="md:col-span-2 space-y-2">
+                                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">Folder Proyek (Local Windows)</label>
+                                <div class="flex shadow-sm rounded-xl overflow-hidden">
+                                    <span class="inline-flex items-center px-4 border border-r-0 border-slate-200 bg-slate-100 text-slate-500">
+                                        <i class="bi bi-folder2-open"></i>
                                     </span>
                                     <input type="text" id="inpDir" value="C:/xampp/htdocs/my-app" 
-                                        class="w-full px-4 py-2.5 rounded-r-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-smooth font-mono text-sm text-slate-600">
+                                        class="w-full px-4 py-3 border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-smooth font-mono text-sm text-slate-600">
                                 </div>
-                                <p class="text-xs text-slate-400 mt-2 ml-1">*Lokasi folder di komputer server (XAMPP).</p>
+                                <p class="text-[11px] text-slate-400 mt-1 ml-1 flex items-center gap-1">
+                                    <i class="bi bi-info-circle"></i> Pastikan folder ini ada di komputer server (XAMPP).
+                                </p>
                             </div>
                         </div>
 
-                        <button onclick="generateCode()" class="w-full py-3.5 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-lg shadow-blue-500/20 transition-smooth flex items-center justify-center gap-2 transform active:scale-95">
-                            <i class="bi bi-lightning-charge-fill"></i> Generate Script
+                        <button onclick="generateCode()" class="w-full py-4 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-bold shadow-xl shadow-blue-500/20 transition-transform active:scale-[0.98] flex items-center justify-center gap-3">
+                            <i class="bi bi-lightning-charge-fill text-yellow-300"></i> 
+                            Generate Script Otomatis
                         </button>
 
-                        <div id="outputArea" class="hidden animate-fade-in">
-                            <div class="bg-slate-900 rounded-xl p-5 mb-4 shadow-inner border border-slate-800">
-                                <div class="flex justify-between items-center mb-3 pb-3 border-b border-slate-700">
+                        <div id="outputArea" class="hidden animate-fade-in space-y-4">
+                            <div class="bg-slate-900 rounded-xl p-5 shadow-inner border border-slate-800 relative group">
+                                <div class="flex justify-between items-center mb-3 pb-3 border-b border-slate-700/50">
                                     <span class="text-xs font-mono text-emerald-400 flex items-center gap-2">
                                         <i class="bi bi-file-earmark-code"></i> .github/workflows/deploy.yml
                                     </span>
-                                    <span class="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Preview</span>
+                                    <span class="text-[10px] text-slate-500 uppercase font-bold tracking-widest bg-slate-800 px-2 py-0.5 rounded">Preview</span>
                                 </div>
-                                <textarea id="ymlOutput" rows="8" readonly 
-                                    class="w-full bg-transparent text-slate-300 font-mono text-xs leading-relaxed outline-none resize-none"></textarea>
+                                <textarea id="ymlOutput" rows="6" readonly 
+                                    class="w-full bg-transparent text-slate-300 font-mono text-xs leading-relaxed outline-none resize-none custom-scrollbar"></textarea>
                             </div>
 
                             <div class="grid grid-cols-2 gap-4">
-                                <button onclick="downloadFile()" class="py-2.5 px-4 border border-slate-200 hover:bg-white hover:border-slate-300 text-slate-600 rounded-lg font-semibold transition-smooth flex items-center justify-center gap-2 text-sm">
-                                    <i class="bi bi-download"></i> Download .yml
+                                <button onclick="downloadFile()" class="py-3 px-4 border border-slate-200 hover:bg-slate-50 hover:border-slate-300 text-slate-600 rounded-xl font-bold transition-smooth flex items-center justify-center gap-2 text-sm">
+                                    <i class="bi bi-download"></i> Download
                                 </button>
-                                <button onclick="saveToFolder()" class="py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-semibold shadow-lg shadow-emerald-500/20 transition-smooth flex items-center justify-center gap-2 text-sm">
+                                <button onclick="saveToFolder()" class="py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold shadow-lg shadow-emerald-500/20 transition-smooth flex items-center justify-center gap-2 text-sm">
                                     <i class="bi bi-floppy2-fill"></i> Save to Folder
                                 </button>
                             </div>
@@ -164,45 +181,66 @@
             </div>
         </div>
         
-        <div class="text-center mt-16 border-t border-slate-200 pt-8">
-            <p class="text-slate-400 text-sm">Developed for Research Project &copy; 2024</p>
+        <div class="text-center mt-12 border-t border-slate-200 pt-8 pb-8">
+            <p class="text-slate-400 text-sm font-medium">Developed for Research Project SE-05 &copy; 2024</p>
         </div>
     </div>
 
     <script>
-        // --- 1. LOGIC AUDIT ---
-        const checkboxes = document.querySelectorAll('.check-item');
-        const scoreTxt = document.getElementById('scoreTxt');
-        const badgeTxt = document.getElementById('badgeTxt');
-        const statusBox = document.getElementById('statusBox');
-        const locker = document.getElementById('locker');
-
-        function updateScore() {
-            const total = checkboxes.length;
-            const checked = document.querySelectorAll('.check-item:checked').length;
-            const percent = Math.round((checked / total) * 100);
-
-            scoreTxt.innerText = percent + "%";
+        // Gunakan DOMContentLoaded agar script berjalan SETELAH halaman siap
+        document.addEventListener('DOMContentLoaded', () => {
             
-            if(percent === 100) {
-                // Style Ready (Green)
-                statusBox.className = "rounded-xl p-4 text-center transition-smooth bg-emerald-50 text-emerald-700 border border-emerald-100";
-                badgeTxt.className = "inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-200 text-emerald-800 uppercase tracking-wider";
-                badgeTxt.innerText = "SIAP DEPLOY";
-                locker.classList.add('hidden'); 
-                locker.classList.remove('flex');
-            } else {
-                // Style Not Ready (Grey)
-                statusBox.className = "rounded-xl p-4 text-center transition-smooth bg-slate-100 text-slate-500 border border-slate-200";
-                badgeTxt.className = "inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-500 uppercase tracking-wider";
-                badgeTxt.innerText = "BELUM SIAP";
-                locker.classList.remove('hidden');
-                locker.classList.add('flex');
-            }
-        }
-        checkboxes.forEach(c => c.addEventListener('change', updateScore));
+            // --- 1. LOGIC AUDIT ---
+            const checkboxes = document.querySelectorAll('.check-item');
+            const scoreTxt = document.getElementById('scoreTxt');
+            const badgeTxt = document.getElementById('badgeTxt');
+            const statusBox = document.getElementById('statusBox');
+            const locker = document.getElementById('locker');
 
-        // --- 2. LOGIC GENERATE ---
+            function updateScore() {
+                const total = checkboxes.length;
+                // Hitung checkbox yang dicentang
+                let checkedCount = 0;
+                checkboxes.forEach(box => {
+                    if (box.checked) checkedCount++;
+                });
+
+                const percent = Math.round((checkedCount / total) * 100);
+
+                // Update Teks Persen
+                scoreTxt.innerText = percent + "%";
+                
+                // Update UI berdasarkan skor
+                if(percent === 100) {
+                    // READY STATE
+                    statusBox.className = "rounded-xl p-5 text-center transition-smooth bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-sm";
+                    badgeTxt.className = "inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-emerald-200 text-emerald-800 uppercase tracking-widest";
+                    badgeTxt.innerText = "SIAP DEPLOY";
+                    
+                    // Buka Kunci (Hide Locker)
+                    locker.classList.add('hidden'); 
+                    locker.classList.remove('flex');
+                } else {
+                    // NOT READY STATE
+                    statusBox.className = "rounded-xl p-5 text-center transition-smooth bg-slate-200 text-slate-500 border border-transparent";
+                    badgeTxt.className = "inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-slate-300 text-slate-600 uppercase tracking-widest";
+                    badgeTxt.innerText = "BELUM SIAP";
+                    
+                    // Kunci Kembali (Show Locker)
+                    locker.classList.remove('hidden');
+                    locker.classList.add('flex');
+                }
+            }
+
+            // Pasang event listener ke setiap checkbox
+            checkboxes.forEach(box => {
+                box.addEventListener('change', updateScore);
+            });
+
+        });
+
+        // --- 2. LOGIC GENERATOR (Global Functions) ---
+        
         function generateCode() {
             const proj = document.getElementById('inpProj').value || 'app';
             const branch = document.getElementById('inpBranch').value || 'main';
@@ -230,10 +268,12 @@ jobs:
             **/.github/**`;
 
             document.getElementById('ymlOutput').value = yaml;
-            document.getElementById('outputArea').classList.remove('hidden');
+            
+            // Tampilkan area output dengan animasi
+            const outArea = document.getElementById('outputArea');
+            outArea.classList.remove('hidden');
         }
 
-        // --- 3. LOGIC DOWNLOAD (Universal) ---
         function downloadFile() {
             const content = document.getElementById('ymlOutput').value;
             const blob = new Blob([content], { type: 'text/yaml' });
@@ -246,18 +286,17 @@ jobs:
             window.URL.revokeObjectURL(url);
         }
 
-        // --- 4. LOGIC SAVE (Environment Aware) ---
         function saveToFolder() {
-            // DETEKSI 1: Apakah sedang di GitHub Pages?
+            // DETEKSI 1: Cek apakah di GitHub Pages
             if (window.location.hostname.includes("github.io")) {
                 Swal.fire({
                     icon: 'info',
                     title: 'Demo Mode Detected',
                     html: `
                         <div class="text-left text-sm text-slate-600">
-                            <p class="mb-3">Fitur <b>Save to Folder</b> dinonaktifkan di GitHub Pages karena alasan keamanan (Browser Sandbox tidak mengizinkan akses file sistem).</p>
-                            <div class="bg-blue-50 p-3 rounded border border-blue-100">
-                                <strong>💡 Cara menggunakan fitur ini:</strong>
+                            <p class="mb-3">Fitur <b>Save to Folder</b> dinonaktifkan di versi Online (GitHub Pages) karena alasan keamanan browser.</p>
+                            <div class="bg-blue-50 p-3 rounded border border-blue-100 text-xs">
+                                <strong>💡 Cara menggunakan:</strong>
                                 <ul class="list-disc ml-4 mt-1">
                                     <li>Download Source Code repository ini.</li>
                                     <li>Jalankan di <b>XAMPP (Localhost)</b>.</li>
@@ -268,20 +307,15 @@ jobs:
                     confirmButtonText: 'Siap, Mengerti',
                     confirmButtonColor: '#3b82f6'
                 });
-                return; // Stop eksekusi
+                return; 
             }
 
-            // DETEKSI 2: Jika di Localhost, Lanjut ke PHP
+            // DETEKSI 2: Lanjut proses PHP jika di Localhost
             const content = document.getElementById('ymlOutput').value;
             const targetPath = document.getElementById('inpDir').value;
 
             if(!targetPath) {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Folder Kosong',
-                    text: 'Harap isi lokasi folder proyek Anda!',
-                    confirmButtonColor: '#f59e0b'
-                });
+                Swal.fire('Folder Kosong', 'Harap isi lokasi folder proyek!', 'warning');
                 return;
             }
 
@@ -293,24 +327,14 @@ jobs:
             .then(response => response.json())
             .then(data => {
                 if(data.status === 'success') {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil Disimpan!',
-                        text: data.message,
-                        confirmButtonColor: '#10b981'
-                    });
+                    Swal.fire('Berhasil!', data.message, 'success');
                 } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Gagal Menyimpan',
-                        text: data.message,
-                        confirmButtonColor: '#ef4444'
-                    });
+                    Swal.fire('Gagal', data.message, 'error');
                 }
             })
             .catch(err => {
                 console.error(err);
-                Swal.fire('Error Koneksi', 'Pastikan file save.php ada dan XAMPP berjalan.', 'error');
+                Swal.fire('Error Sistem', 'Pastikan dijalankan di localhost XAMPP dan file save.php ada.', 'error');
             });
         }
     </script>
