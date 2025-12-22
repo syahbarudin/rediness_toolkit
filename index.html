@@ -240,46 +240,71 @@ jobs:
         }
 
         function saveToFolder() {
-            const content = document.getElementById('ymlOutput').value;
-            const targetPath = document.getElementById('inpDir').value;
+    // 1. CEK: Apakah sedang dibuka di GitHub (Online)?
+    if (window.location.hostname.includes("github.io")) {
+        Swal.fire({
+            icon: 'info',
+            title: 'Mode Demo Online',
+            html: `
+                <p class="text-sm text-slate-600 mb-4">
+                    Fitur <b>Save to Folder</b> memerlukan server PHP (XAMPP) dan akses ke file sistem lokal.
+                    Di GitHub Pages, fitur ini dinonaktifkan demi keamanan.
+                </p>
+                <div class="bg-blue-50 p-3 rounded text-left text-xs text-blue-800">
+                    <strong>Cara Pakai Full Version:</strong><br>
+                    1. Download source code.<br>
+                    2. Extract di C:/xampp/htdocs/<br>
+                    3. Jalankan di localhost.
+                </div>
+            `,
+            confirmButtonText: 'Oke, Mengerti',
+            confirmButtonColor: '#3b82f6'
+        });
+        return; // BERHENTI DI SINI, jangan jalankan kode PHP
+    }
 
-            if(!targetPath) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Lokasi folder proyek harus diisi!',
-                    confirmButtonColor: '#3b82f6'
-                });
-                return;
-            }
+    // 2. Jika bukan di GitHub (berarti di XAMPP), Lanjut ke proses asli:
+    const content = document.getElementById('ymlOutput').value;
+    const targetPath = document.getElementById('inpDir').value;
 
-            fetch('save.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ path: targetPath, content: content })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.status === 'success') {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil!',
-                        text: data.message,
-                        confirmButtonColor: '#10b981'
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Gagal',
-                        text: data.message,
-                        confirmButtonColor: '#ef4444'
-                    });
-                }
-            })
-            .catch(err => {
-                Swal.fire('Error Sistem', 'Pastikan dijalankan di localhost XAMPP', 'error');
+    if(!targetPath) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Lokasi folder proyek harus diisi!',
+            confirmButtonColor: '#3b82f6'
+        });
+        return;
+    }
+
+    fetch('save.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path: targetPath, content: content })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.status === 'success') {
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: data.message,
+                confirmButtonColor: '#10b981'
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal',
+                text: data.message,
+                confirmButtonColor: '#ef4444'
             });
         }
+    })
+    .catch(err => {
+        Swal.fire('Error Sistem', 'Pastikan dijalankan di localhost XAMPP', 'error');
+    });
+}        }
     </script>
 </body>
 </html>
+
