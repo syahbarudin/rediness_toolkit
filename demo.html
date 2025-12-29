@@ -392,51 +392,57 @@ jobs:
 
       // --- 4. LOGIC SAVE VIA PHP ---
       function saveToFolder() {
-        const content = document.getElementById("ymlOutput").value;
-        const targetPath = document.getElementById("inpDir").value;
-
-        if (!targetPath) {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Lokasi folder proyek harus diisi!",
-            confirmButtonColor: "#3b82f6",
-          });
-          return;
-        }
-
-        // Memanggil Backend save.php
-        fetch("save.php", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ path: targetPath, content: content }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.status === "success") {
-              Swal.fire({
-                icon: "success",
-                title: "Berhasil!",
-                text: data.message,
-                confirmButtonColor: "#10b981",
-              });
-            } else {
-              Swal.fire({
-                icon: "error",
-                title: "Gagal",
-                text: data.message,
-                confirmButtonColor: "#ef4444",
-              });
+            // DETEKSI 1: Cek apakah di GitHub Pages
+            if (window.location.hostname.includes("github.io")) {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Demo Mode Detected',
+                    html: `
+                        <div class="text-left text-sm text-slate-600">
+                            <p class="mb-3">Fitur <b>Save to Folder</b> dinonaktifkan di versi Online (GitHub Pages) karena alasan keamanan browser.</p>
+                            <div class="bg-blue-50 p-3 rounded border border-blue-100 text-xs">
+                                <strong>💡 Cara menggunakan:</strong>
+                                <ul class="list-disc ml-4 mt-1">
+                                    <li>Download Source Code repository ini.</li>
+                                    <li>Jalankan di <b>XAMPP (Localhost)</b>.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    `,
+                    confirmButtonText: 'Siap, Mengerti',
+                    confirmButtonColor: '#3b82f6'
+                });
+                return; 
             }
-          })
-          .catch((err) => {
-            Swal.fire(
-              "Error Sistem",
-              "Pastikan Anda menjalankan ini di Localhost (XAMPP) dan file save.php tersedia.",
-              "error"
-            );
-          });
-      }
+
+            // DETEKSI 2: Lanjut proses PHP jika di Localhost
+            const content = document.getElementById('ymlOutput').value;
+            const targetPath = document.getElementById('inpDir').value;
+
+            if(!targetPath) {
+                Swal.fire('Folder Kosong', 'Harap isi lokasi folder proyek!', 'warning');
+                return;
+            }
+
+            fetch('save.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ path: targetPath, content: content })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === 'success') {
+                    Swal.fire('Berhasil!', data.message, 'success');
+                } else {
+                    Swal.fire('Gagal', data.message, 'error');
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                Swal.fire('Error Sistem', 'Pastikan dijalankan di localhost XAMPP dan file save.php ada.', 'error');
+            });
+        }
     </script>
   </body>
 </html>
+
